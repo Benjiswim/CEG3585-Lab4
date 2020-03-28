@@ -141,12 +141,12 @@ public class SecondaryHDLCDataLink
 		Result.ResultCode cd = Result.ResultCode.SrvSucessful;
 
 		// Wait for poll - need an RR with P bit - 1
-		
-		String p;
-		while(!p.equals(HdlcDefs.P1)){
-			frame = getRRFrame(true);
-			p = String.valueOf(frame.charAt(HdlcDefs.PF_IX));
-		}
+
+		frame = getRRFrame(true);
+		if (frame.charAt(HdlcDefs.PF_IX) == '0')
+			return null;
+
+
 				
 		// Send the SDU
 		// After each transmission, check for an ACK (RR)
@@ -161,7 +161,7 @@ public class SecondaryHDLCDataLink
 		while(  )
 		{
 			// Send frame if window not closed and data not all transmitted
-			if(  )
+			if( )
 			{
 				displayDataXchngState("Data Link Layer: prepared and buffered I frame >"+BitString.displayFrame(frame)+"<");
 			}
@@ -192,7 +192,7 @@ public class SecondaryHDLCDataLink
 		int lhs;
 		lhs = rhs - sz;
 
-		return lhs - nr;
+		return nr - lhs;
 		
 	}
 	
