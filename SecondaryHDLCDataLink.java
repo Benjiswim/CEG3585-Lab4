@@ -189,7 +189,10 @@ public class SecondaryHDLCDataLink
 	// sz - size of the window
 	private int checkNr(int nr, int rhs, int sz)
 	{
-		/*Completer cette methode */
+		int lhs;
+		lhs = rhs - sz;
+
+		return lhs - nr;
 		
 	}
 	
